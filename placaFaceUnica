@@ -1,0 +1,24 @@
+public class placaFaceUnica extends placaCircuito {
+    private static final double QUALIDADE = 0.5;
+    private static final double COBRE_POR_UNIDADE = 35.0
+    private static final int id = 010;
+
+    public placaFaceUnica(String nome){
+        super(id,nome, COBRE_POR_UNIDADE, qualidade);
+    }
+
+    @Override
+    public void processar() {
+        System.out.println("Gravando trilhas simples em " + getNome() + "...");
+    }
+
+    @Override
+    public int calcularTempoProducao() {
+        return 12;
+    }
+
+    @Override
+    public String getTipo() {
+        return "Face Única";
+    }
+}
