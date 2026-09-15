@@ -17,8 +17,18 @@ public class maquinaInspecaoOptica extends maquinaGenerica{
     public void processar(placaCircuito placa) {
         System.out.println(getnome() + " Inspecionando " + placa.getNome() + "...");
 
-        if (verificFalha()) {
-            System.out.println(" [ERRO] Falha na inspeção " + placa.getNome());
+        double chanceRejeicao = PROBABILIDADE_FALHA
+                + (placa.getQualidade() * 0.3)
+                + (placa.getProbabilidadeFalhaAcumulada() * 0.5);
+        chanceRejeicao = Math.min(1.0, chanceRejeicao);
+
+        if (sortear(chanceRejeicao)) {
+            placa.setStatus("REJEITADA");
+            System.out.println(" [ERRO] " + placa.getNome() + " reprovada na inspeção (chance de rejeição=" 
+                    + String.format("%.2f", chanceRejeicao) + ")");
+        } else {
+            placa.setStatus("APROVADA");
+            System.out.println(" " + placa.getNome() + " aprovada na inspeção.");
         }
     }
     

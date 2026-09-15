@@ -5,10 +5,11 @@ public abstract class placaCircuito {
     private final double quantidadeMateriaPrimaPorUnidade;
     private double qualidade;
     private double probabilidadeFalhaAcumulada;
-    private int totalProdutosFabricados = 0;
+    private static int totalProdutosFabricados = 0;
 
-    public placaCircuito(int id,String nome, double quantidadeMateriaPrimaPorUnidade, double qualidade) {
-        this.id = id;
+    public placaCircuito(String nome, double quantidadeMateriaPrimaPorUnidade, double qualidade) {
+        totalProdutosFabricados++;
+        this.id = totalProdutosFabricados;
         this.nome = nome;
         this.status = "EM_PRODUCAO";
         this.quantidadeMateriaPrimaPorUnidade = quantidadeMateriaPrimaPorUnidade;
@@ -52,7 +53,7 @@ public abstract class placaCircuito {
     public void aumentarProbabilidadeFalha(double incremento) {
         this.probabilidadeFalhaAcumulada = Math.min(1.0, this.probabilidadeFalhaAcumulada+incremento);
     }
-    public int getTotalProdutosFabricados() {
+    public static int getTotalProdutosFabricados() {
         return totalProdutosFabricados;
     }
 

@@ -50,8 +50,16 @@ public abstract class maquinaGenerica {
     }
 
     public boolean verificFalha() {
+        return sortear(probabFalha);
+    }
+
+    public boolean estaLigada() {
+        return ligada;
+    }
+
+    protected boolean sortear(double probabilidade) {
         double aleatorio = aleatoriedade.nextDouble();
-        return aleatorio < probabFalha;
+        return aleatorio < probabilidade;
     }
 
     @Override

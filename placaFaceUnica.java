@@ -1,10 +1,9 @@
 public class placaFaceUnica extends placaCircuito {
     private static final double QUALIDADE = 0.5;
     private static final double COBRE_POR_UNIDADE = 35.0;
-    private static final int id = 010;
 
     public placaFaceUnica(String nome){
-        super(id,nome, COBRE_POR_UNIDADE, QUALIDADE);
+        super(nome, COBRE_POR_UNIDADE, QUALIDADE);
     }
 
     @Override
